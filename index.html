@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root{
+            --name:red;
+
+        }
+        .user {
+            border: 1px solid black;
+            padding: 30px;
+            color: var(--name);
+        }
+        h1{
+            color: var(--name);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="users" id="users">
+
+    </div>
+<h1 class="h1">hello</h1>
+
+
+
+    <script>
+        let usersDetail = document.getElementById('users')
+        let users = [
+            {
+                name: 'jatin',
+                age: 20,
+                id: 1
+            },
+            {
+                name: 'magan',
+                age: 21,
+                id: 2
+            },
+            {
+                name: 'dhruvin',
+                age: 30,
+                id: 3
+            }
+        ]
+
+
+        usersDetail.innerHTML = users.map((ma) => {
+            return ` <div class="user">
+        <h3>${ma.name}</h3>
+        <p>${ma.age}</p>
+        <button onclick='Delete(${ma.id})'>${ma.id}:Remove</button>
+    </div>`
+        })
+
+        function Delete(id) {
+            // let getuser = users.find((u)=>u.id == id)
+            // console.log(getuser)
+
+
+            users = users.filter((u) => u.id != id)
+
+
+            usersDetail.innerHTML = users.map((ma) => {
+                return ` <div class="user">
+        <h3>${ma.name}</h3>
+        <p>${ma.age}</p>
+        <button onclick='Delete(${ma.id})'>${ma.id}:Remove</button>
+    </div>`
+            })
+        }
+
+    </script>
+</body>
+
+</html>
